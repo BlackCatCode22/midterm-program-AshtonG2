@@ -4,36 +4,42 @@
 
 using namespace std;
 
-string genUniqueID(string species, int numOfSpecies) {
-    
+string genUniqueID(string species, int numOfSpecies)
+{
     string uniqueID;
-    
-    if (species == "hyena") {
-        uniqueID = "hy0" + to_string(numOfSpecies);
+    if (species == "hyena")
+    {
+        uniqueID = "Hy0" + to_string(numOfSpecies);
     }
-    else if (species == "lion") {
-        uniqueID = "li0" + to_string(numOfSpecies);
+    else if (species == "lion")
+    {
+        uniqueID = "Li0" + to_string(numOfSpecies);
     }
-    else if (species == "tiger") {
-        uniqueID = "ti0" + to_string(numOfSpecies);
+    else if (species == "tiger")
+    {
+        uniqueID = "Ti0" + to_string(numOfSpecies);
     }
-    else if (species == "bear") {
-        uniqueID = "be0" + to_string(numOfSpecies);
+    else if (species == "bear")
+    {
+        uniqueID = "Be0" + to_string(numOfSpecies);
     }
-    else {
+    else
+    {
         uniqueID = "error";
     }
-
     return uniqueID;
 }
 
 
-
 string calcBirthdate(int years, string season) {
     int birthYear = 0;
+
     string birthDate;
+
     birthYear = 2023 - years;
+
     string monthDay;
+
     if (season == "spri") {
         monthDay = "Mar 21";
     }
@@ -78,26 +84,25 @@ int main()
     string outputLine = "";
 
     lineNum = 0;
-    try {
-        
-        ifstream myFile("C:/cStuff/arrivingAnimals.txt");
-        
-       
-        cout << "\n\n Contents of C:/cStuff/arrivingAnimals.txt ...";
-        while (getline(myFile, myTextStr)) {
-            
-            cout << "\n" << myTextStr;
-            
-            lines[lineNum] = myTextStr;
-            lineNum++;
+  
+
+    string line;
+    ifstream myAnimalFile("arrivingAnimals.txt");
+    if (myAnimalFile.is_open())
+    {
+        while (getline(myAnimalFile, line))
+        {
+            cout << "\n this is a line from arrivingAnimals.txt: ";
+            cout << line;
         }
-        cout << "\n  End of C:/cStuff/arrivingAnimals.txt ...\n\n";
-        
-        myFile.close();
+        cout << "\n\n";
     }
-    catch (...) {
-        cout << "\nException caught! \n";
+    else
+    {
+        cout << "\n file is not open \n";
     }
+
+    myAnimalFile.close();
 
     string oneLine = lines[3];
 
